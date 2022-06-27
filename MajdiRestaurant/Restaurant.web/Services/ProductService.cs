@@ -28,7 +28,7 @@ namespace Restaurant.web.Services
             return await this.SendAsync<T>(new ApiRequest
             {
                 ApiType = StaticDetails.ApiType.DELETE,
-                Url = StaticDetails.ProductAPIBase + "/api/products"+ id,
+                Url = StaticDetails.ProductAPIBase + "/api/products/"+ id,
                 AccessToken = ""
             });
         }
@@ -38,7 +38,7 @@ namespace Restaurant.web.Services
             return await this.SendAsync<T>(new ApiRequest
             {
                 ApiType = StaticDetails.ApiType.GET,
-                Url = StaticDetails.ProductAPIBase + "/api/products" + id,
+                Url = StaticDetails.ProductAPIBase + "/api/products/" + id,
                 AccessToken = ""
             });
         }
