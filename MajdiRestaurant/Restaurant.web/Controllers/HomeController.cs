@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Restaurant.web.Models;
 using System.Diagnostics;
 
@@ -28,5 +29,16 @@ namespace Restaurant.web.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [Authorize]
+        public IActionResult Login()
+        {
+            return RedirectToAction(nameof(Index));
+        }
+        public IActionResult Logout()
+        {
+            return SignOut("Cookies","iodc");
+        }
+
     }
 }
