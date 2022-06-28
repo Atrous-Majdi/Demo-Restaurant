@@ -5,8 +5,8 @@ namespace Mango.Services.Identity
 {
     public static class StaticDetails
     {
-        public const string Admin = "Admin";
-        public const string Customer = "Customer";
+        public const string Admin = "ADMIN";
+        public const string Customer = "CUSTOMER";
 
         public static IEnumerable<IdentityResource> IdentityResources =>
             new List<IdentityResource>
