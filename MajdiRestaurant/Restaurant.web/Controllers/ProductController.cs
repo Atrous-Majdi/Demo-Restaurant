@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Restaurant.web.Models;
 using Restaurant.web.Services.IServices;
@@ -17,8 +18,9 @@ namespace Restaurant.web.Controllers
         public async Task<IActionResult> ProductIndex()
         {
             List<ProductDto> list = new();
-          
-            var response = await _productService.GetProductsAsync<ResponseDto>();
+            var accessToken = await HttpContext.GetTokenAsync("access_token");
+
+            var response = await _productService.GetProductsAsync<ResponseDto>(accessToken);
 
             if (response != null && response.IsSuccess)
             {
@@ -38,7 +40,8 @@ namespace Restaurant.web.Controllers
         {
             if(ModelState.IsValid)
             {
-                var response = await _productService.CreateProductAsync<ResponseDto>(product);
+                var accessToken = await HttpContext.GetTokenAsync("access_token");
+                var response = await _productService.CreateProductAsync<ResponseDto>(product,accessToken);
 
                 if (response != null && response.IsSuccess)
                 {
@@ -51,7 +54,8 @@ namespace Restaurant.web.Controllers
 
         public async Task<IActionResult> ProductEdit(int productId)
         {
-            var response = await _productService.GetProductAsync<ResponseDto>(productId);
+            var accessToken = await HttpContext.GetTokenAsync("access_token");
+            var response = await _productService.GetProductAsync<ResponseDto>(productId,accessToken);
 
             if (response != null && response.IsSuccess)
             {
@@ -68,7 +72,8 @@ namespace Restaurant.web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var response = await _productService.UpdateProductAsync<ResponseDto>(product);
+                var accessToken = await HttpContext.GetTokenAsync("access_token");
+                var response = await _productService.UpdateProductAsync<ResponseDto>(product, accessToken);
 
                 if (response != null && response.IsSuccess)
                 {
@@ -80,7 +85,8 @@ namespace Restaurant.web.Controllers
 
         public async Task<IActionResult> ProductDelete(int productId)
         {
-            var response = await _productService.GetProductAsync<ResponseDto>(productId);
+            var accessToken = await HttpContext.GetTokenAsync("access_token");
+            var response = await _productService.GetProductAsync<ResponseDto>(productId,accessToken);
 
             if (response != null && response.IsSuccess)
             {
@@ -97,7 +103,8 @@ namespace Restaurant.web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var response = await _productService.DeleteProductAsync<ResponseDto>(product.ProductId);
+                var accessToken = await HttpContext.GetTokenAsync("access_token");
+                var response = await _productService.DeleteProductAsync<ResponseDto>(product.ProductId, accessToken);
 
                 if (response != null && response.IsSuccess)
                 {

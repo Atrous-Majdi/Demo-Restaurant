@@ -88,7 +88,7 @@ namespace Restaurant.Services.ProductsAPI.Controllers
         }
 
         [HttpDelete]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "ADMIN")]
         [Route("{id}")]
         public async Task<object> Delete(int id)
         {
