@@ -27,8 +27,19 @@ namespace Restaurant.web.Controllers
             {
                 productsList = JsonConvert.DeserializeObject<List<ProductDto>>(Convert.ToString(response.Result)); 
             }
+            return View(productsList);
+        }
 
-            return View();
+        [Authorize]
+        public async Task<IActionResult> Details(int productId)
+        {
+            ProductDto product = new ProductDto();
+            var response = await _productService.GetProductAsync<ResponseDto>(productId,"");
+            if (response != null && response.IsSuccess)
+            {
+                product = JsonConvert.DeserializeObject<ProductDto>(Convert.ToString(response.Result));
+            }
+            return View(product);
         }
 
         public IActionResult Privacy()

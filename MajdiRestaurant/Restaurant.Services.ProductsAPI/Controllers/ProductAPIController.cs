@@ -19,7 +19,6 @@ namespace Restaurant.Services.ProductsAPI.Controllers
 
        
         [HttpGet]
-        [Authorize]
         public async Task<object> Get()
         {
             try
@@ -36,7 +35,6 @@ namespace Restaurant.Services.ProductsAPI.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         [Route("{id}")]
         public async Task<object> Get(int id)
         {
