@@ -11,6 +11,7 @@ namespace Restaurant.Services.ShoppingCartAPI.Models
         public int ProductId { get; set; }
         [ForeignKey("ProductId")]
         public virtual Product Product { get; set; }
+        public int Count { get; set; }
 
     }
 }
