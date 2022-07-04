@@ -1,4 +1,4 @@
-﻿namespace Restaurant.Services.ProductsAPI.DbContexts.Models.Dtos
+﻿namespace Restaurant.Services.ProductsAPI.Models.Dtos
 {
     public class ResponseDto
     {

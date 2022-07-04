@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Restaurant.Services.ProductsAPI.DbContexts.Models
+namespace Restaurant.Services.ProductsAPI.Models
 {
     public class Product
     {

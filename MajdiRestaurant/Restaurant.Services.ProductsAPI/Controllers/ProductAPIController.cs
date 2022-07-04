@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Restaurant.Services.ProductsAPI.DbContexts.Models.Dtos;
+using Restaurant.Services.ProductsAPI.Models.Dtos;
 using Restaurant.Services.ProductsAPI.Repository;
 
 namespace Restaurant.Services.ProductsAPI.Controllers
